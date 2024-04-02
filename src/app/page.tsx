@@ -1,7 +1,6 @@
 "use client";
 import Dashboard from "@/components/Dashboard/Dashboard";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import { AuthProvider } from "@/components/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -19,11 +18,9 @@ export default function Home() {
 
   return (
     <>
-      <AuthProvider>
         <DefaultLayout>
           <Dashboard />
         </DefaultLayout>
-      </AuthProvider>
     </>
   );
 }

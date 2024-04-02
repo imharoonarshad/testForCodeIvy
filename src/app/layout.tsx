@@ -5,7 +5,6 @@ import "@/css/satoshi.css";
 import "@/css/style.css";
 import React, { useEffect, useState } from "react";
 import Loader from "@/components/common/Loader";
-import { AuthProvider } from "@/components/context/AuthContext";
 import { useRouter } from "next/navigation";
 
 export default function RootLayout({
@@ -28,16 +27,14 @@ export default function RootLayout({
       // If token is not present, navigate to user registration page
       router.push("/user-registration");
     }
-  }, []); 
+  }, []);
 
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <AuthProvider>
-          <div className="dark:bg-boxdark-2 dark:text-bodydark">
-            {loading ? <Loader /> : children}
-          </div>
-        </AuthProvider>
+        <div className="dark:bg-boxdark-2 dark:text-bodydark">
+          {loading ? <Loader /> : children}
+        </div>
       </body>
     </html>
   );

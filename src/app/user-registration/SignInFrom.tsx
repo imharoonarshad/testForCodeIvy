@@ -3,7 +3,6 @@ import { SigninSchema } from "./SigninSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/components/context/AuthContext";
 
 const handleLoginSubmit = async (reqBody: any) => {
   console.log("userName password ", reqBody);
@@ -37,7 +36,7 @@ const handleLoginSubmit = async (reqBody: any) => {
 const SignInFrom = () => {
   const [isPasswordVisible, setPasswordVisibility] = useState(false);
   const router = useRouter();
-  const { setToken } = useAuth();
+  // const { setToken } = useAuth();
 
   const {
     register,
@@ -57,7 +56,6 @@ const SignInFrom = () => {
       console.log('data',data.data.token)
 
       if (data?.data.token) {
-        setToken(data.data.token); // Set token in context
         localStorage.setItem('token', data.data.token); // Set token in local storage
         router.push('/'); // Redirect to homepage
       }
