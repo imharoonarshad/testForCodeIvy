@@ -21,13 +21,16 @@ export default function RootLayout({
   const router = useRouter();
 
   useEffect(() => {
-    // Check local storage for token on initial render
-    const token = localStorage.getItem("token");
-    if (!token) {
-      // If token is not present, navigate to user registration page
-      router.push("/user-registration");
+    // Check if window object is available (browser environment)
+    if (typeof window !== 'undefined') {
+      // Access localStorage to check for token
+      const token = localStorage.getItem("token");
+      if (!token) {
+        // If token is not present, navigate to user registration page
+        router.push("/user-registration");
+      }
     }
-  }, []);
+  }, [router]);
 
   return (
     <html lang="en">
