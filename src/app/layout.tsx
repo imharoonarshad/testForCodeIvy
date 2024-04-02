@@ -21,8 +21,8 @@ export default function RootLayout({
   const router = useRouter();
 
   useEffect(() => {
-    // Check if window object is available (browser environment)
-    if (typeof window !== 'undefined') {
+
+    if (typeof localStorage !== 'undefined') {
       // Access localStorage to check for token
       const token = localStorage.getItem("token");
       if (!token) {
